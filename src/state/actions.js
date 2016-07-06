@@ -22,16 +22,16 @@ export function getPopularMovies () {
         //
         const response = jsonResponses[0].results;
  
-        const combinedResults = response.sort(function(a, b) {
-                                  const aYear = a['releaseDate'].slice(0,4),
-                                        bYear = b['releaseDate'].slice(0,4),
-                                        aTitle= a['trackName'],
-                                        bTitle= b['trackName'],
-                                        yearSort = aYear > bYear ? -1 : aYear < bYear ? 1 : 0;
 
-                                  if(yearSort != 0) {
+        const combinedResults = response.sort((a, b) => {
+                                  const aYear = a['releaseDate'].slice(0,4),
+                                  bYear = b['releaseDate'].slice(0,4),
+                                  aTitle= a['trackName'],
+                                  bTitle= b['trackName'],
+                                  yearSort = aYear > bYear ? -1 : aYear < bYear ? 1 : 0;
+
+                                  if (yearSort != 0)
                                     return yearSort;
-                                  }
 
                                   return aTitle < bTitle ? -1 : aTitle > bTitle ? 1 : 0; 
                                 });
